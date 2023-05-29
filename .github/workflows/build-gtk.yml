@@ -36,6 +36,7 @@ jobs:
             dotnet workload install gtk --skip-manifest-update
       - name: Build MAUI
         run: |
+            dotnet build src/Controls/src/SourceGen/Controls.SourceGen.csproj
             dotnet build Microsoft.Maui.Gtk.slnf
       - name: Build ZXing.Net.Maui
         run: |
