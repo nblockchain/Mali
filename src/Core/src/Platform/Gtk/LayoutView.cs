@@ -233,11 +233,11 @@ namespace Microsoft.Maui.Platform
 					mAllocation.Size = mesuredAllocation;
 					CurrentAllocation = mAllocation;
 				}
-				
+
 				if (crossPlatformLayout is IView virtualView)
 				{
 					var measuredAllocation = Measure(allocation.Width, allocation.Height);
-					
+
 					// Adjust for VerticalOptions
 					if (virtualView.VerticalLayoutAlignment == LayoutAlignment.Center)
 					{
