@@ -38,6 +38,16 @@ jobs:
             dotnet build -c Release Mali.slnf
       - name: Pack MAUI
         run: dotnet pack Mali.slnf
+      - name: Build Mali.ZXing
+        run: |
+            cd src/ZXing.Net.Maui
+            dotnet build -c Release --framework=net8.0-gtk ZXing.Net.MAUI/ZXing.Net.MAUI.csproj
+            dotnet build -c Release --framework=net8.0-gtk ZXing.Net.MAUI.Controls/ZXing.Net.MAUI.Controls.csproj        
+      - name: Pack Mali.ZXing
+        run: |
+            dotnet pack src/ZXing.Net.Maui/ZXing.Net.MAUI/ZXing.Net.MAUI.csproj --no-build --no-restore
+            dotnet pack src/ZXing.Net.Maui/ZXing.Net.MAUI.Controls/ZXing.Net.MAUI.Controls.csproj --no-build --no-restore       
+                  
       - name: Upload binaries to nuget (if tag or main branch, and nugetKey is present)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
